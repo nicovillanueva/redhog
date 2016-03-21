@@ -7,6 +7,7 @@ Because there's nothing better than overengineering and overcomplicating stuff, 
 - `/hog?timeout=10&threads=10`
 	- This will spawn 10 workers which will generate prime numbers for 10 seconds.
 	- If you look at the stdout, each worker has a name and a designated 'pen' (you know, hogs live in pens), and they announce the latest prime number they find.
+	- Defaults to 1 hog working for 10 seconds
 
 
 - `/hog/abort`
@@ -16,6 +17,8 @@ Because there's nothing better than overengineering and overcomplicating stuff, 
 - `/simulate?duration=500&timeunit=milliseconds`
 	- Does a 'realistic' call and gives out a 'realistic' response. In this case, it takes 500 milliseconds and then replies with a JSON
 	- It accepts milliseconds, seconds and minutes
+	- Setting the duration to -1, makes it a random number between 0 and 1000
+	- timeunit defaults to milliseconds
 
 ## Prime saving
 
