@@ -1,0 +1,13 @@
+web:
+    image: redbee/red-hog
+    ports:
+        - "8080:8080"
+    links:
+        - db
+    restart: "always"
+    environment:
+        - REDIS_HOST=db
+db:
+    image: redis
+    ports:
+        - "6379:6379"
