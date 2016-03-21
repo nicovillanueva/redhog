@@ -1,5 +1,14 @@
 package redhog;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
@@ -9,15 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 @RestController
 @SpringBootApplication
@@ -81,8 +81,8 @@ public class Application {
     /**
      * Simulate a "realistic" query in time and response type. It takes a while, and replies a JSON
      *
-     * @param timeout  How long should the request take to return (-1 for a random between 0 and 1000)
-     * @param timeunit Timeunit to use (defaults to milliseconds, but accepts seconds and minutes too)
+     * @param timeout   How long should the request take to return (-1 for a random between 0 and 1000)
+     * @param timeunit  Timeunit to use (defaults to milliseconds, but accepts seconds and minutes too)
      * @param failRatio Float number between 0.0 and 1.0 that denotes how likely is the request to fail (1.0 fails everytime)
      * @return Mocked up JSON response (instance of 'Response')
      */
@@ -99,7 +99,7 @@ public class Application {
         String name = this.names.get(r.nextInt(this.names.size()));
         float f = r.nextFloat();
         if (f < failRatio) {
-            if(r.nextBoolean()) {
+            if (r.nextBoolean()) {
                 throw new ForcedErrorException("Oh shit, this one failed");
             } else {
                 throw new PotteryException("I'm a little teapot. Short and stout. Here is my handle. Here is my spout.");

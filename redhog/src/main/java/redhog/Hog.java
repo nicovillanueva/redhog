@@ -6,7 +6,7 @@ public class Hog extends Thread {
 
     private String hogName;
     private String pen;
-    Jedis jedis;
+    private Jedis jedis = null;
 
     public Hog(String name, String pen, String redisHost) {
         this.hogName = name;
@@ -22,7 +22,8 @@ public class Hog extends Thread {
             for (int i = starter; i < Integer.MAX_VALUE; i++) {
                 if (isPrime(i)) {
                     System.out.println(String.format("I'm %s, from pen %s and I found the prime: %d", this.hogName, this.pen, i));
-                    jedis.hset(this.pen, this.hogName, String.valueOf(i));
+                    if (this.jedis != null)
+                        jedis.hset(this.pen, this.hogName, String.valueOf(i));
                 }
             }
         }
