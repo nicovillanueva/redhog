@@ -1,4 +1,4 @@
-FROM java:8
+FROM decidir.demo.redbee.io:5000/java:8
 VOLUME /tmp
 ADD red-hog-0.0.1.jar app.jar
 RUN bash -c 'touch /app.jar'
