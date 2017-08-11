@@ -1,0 +1,54 @@
+{
+  "id": "/redhog",
+  "cmd": null,
+  "cpus": 0.01,
+  "mem": 1024,
+  "disk": 0,
+  "instances": 1,
+  "constraints": [
+    [
+      "hostname",
+      "UNLIKE",
+      "192.168.74.25"
+    ]
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "docker.dev.redbee.io/red-hog",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10120,
+          "protocol": "tcp",
+          "labels": {}
+        }
+      ],
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "path": "/stats",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 10,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 10120,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
