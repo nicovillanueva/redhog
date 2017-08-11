@@ -16,7 +16,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "docker.dev.redbee.io/red-hog",
+      "image": "docker.dev.redbee.io/red-hog:0.0.2",
       "network": "BRIDGE",
       "portMappings": [
         {
